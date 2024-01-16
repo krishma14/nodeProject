@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <table>
+        <tr>
+            <th>id</th>
+            <th>Things to do:</th>
+        </tr>
+        <% data.forEach(e=> { %>
+            <tr>
+                <td>
+                    <%= e.id %>
+                </td>
+                <td>
+                    <%= e.data %>
+                </td>
+                <td>
+                    <form action="/delete" method="post">
+                        <input type="hidden" name="data" value="<%= e.data %>">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            <% }); %>
+    </table>
+
+    <form action="/addData" method="post">
+        <input type="text" name="data" placeholder="Enter your name">
+        <button type="submit">submit</button>
+    </form>
+
+</body>
+
+</html>
